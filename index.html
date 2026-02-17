@@ -1,0 +1,28 @@
+<!--
+README: GreenGrid India SPA prototype.
+Run: npm install → npm run dev
+Build: npm run build → npm run preview
+Admin login: admin@greengrid.com / admin123
+Seed test data & dev helpers: press Ctrl+Shift+H to toggle Dev Tools.
+Adjust AI approval rate and simulate time in Dev Tools.
+Use theme toggle or press "T" to switch themes.
+Light/Dark themes update map tiles, markers, and charts.
+Client-only storage: localStorage mock backend.
+Security note: client-only auth is for demo only; use server-side hashing, tokens,
+rate-limiting, validation, and secure image storage in production.
+Data reset available in Dev Tools.
+Uploads store base64 thumbnails only (size-limited).
+Accessibility: focus states and ARIA labels included.
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GreenGrid India</title>
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+    <div id="app" class="min-h-screen"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

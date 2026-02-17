@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --primary: #16a34a;
+  --secondary: #0ea5e9;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --marker-unverified: #ef4444;
+  --marker-verified: #22c55e;
+  --marker-premium: #f59e0b;
+  --tile-filter: none;
+  --chart-grid: rgba(15, 23, 42, 0.08);
+  --chart-text: #0f172a;
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #0b1220;
+  --card: #111827;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --primary: #22c55e;
+  --secondary: #38bdf8;
+  --danger: #f87171;
+  --warning: #fbbf24;
+  --marker-unverified: #f87171;
+  --marker-verified: #4ade80;
+  --marker-premium: #facc15;
+  --tile-filter: brightness(0.85) saturate(1.2);
+  --chart-grid: rgba(226, 232, 240, 0.12);
+  --chart-text: #e2e8f0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.card {
+  @apply rounded-2xl shadow-lg border border-slate-200/60 dark:border-slate-800/70 bg-white dark:bg-slate-900;
+  background: var(--card);
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 font-semibold transition hover:opacity-90;
+}
+
+.btn-primary {
+  @apply text-white;
+  background: var(--primary);
+}
+
+.btn-secondary {
+  @apply text-white;
+  background: var(--secondary);
+}
+
+.btn-outline {
+  @apply border border-slate-300 dark:border-slate-700;
+  color: var(--text);
+}
+
+.badge {
+  @apply inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold;
+}
+
+.badge-premium {
+  background: linear-gradient(120deg, #fbbf24, #f59e0b);
+  color: #111827;
+}
+
+.focus-ring:focus-visible {
+  outline: 3px solid var(--secondary);
+  outline-offset: 3px;
+}
+
+.scanning-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 60;
+}
+
+.scanning-card {
+  @apply card px-8 py-6 text-center;
+}
+
+.scanning-bar {
+  width: 220px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.3);
+  overflow: hidden;
+  position: relative;
+}
+
+.scanning-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+  animation: scan 1.2s ease-in-out infinite;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+.toast {
+  @apply card px-4 py-3 text-sm;
+  background: var(--card);
+}
+
+.leaflet-container {
+  border-radius: 16px;
+  filter: var(--tile-filter);
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--card);
+  color: var(--text);
+}
+
+.leaflet-popup-tip {
+  background: var(--card);
+}
+
+@media (max-width: 768px) {
+  #map {
+    height: 420px !important;
+  }
+}
